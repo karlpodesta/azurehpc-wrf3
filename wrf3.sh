@@ -185,9 +185,21 @@ cd /data/wrf3/Build_WRF/LIBRARIES
 wget https://support.hdfgroup.org/ftp/HDF5/releases/tools/h4toh5/h4toh5-2.2.5/bin/h4h5tools-1.10.6-2.2.5-centos7_64.tar.gz
 tar -zxvf h4h5tools-1.10.6-2.2.5-centos7_64.tar.gz
 cd /data/wrf3/Build_WRF/LIBRARIES/hdf
-./H4H5-2.2.5-Linux.sh  
-cd H4H5-2.2.5-Linux/HDF_Group/H4H5/2.2.5/bin
-./h4toh5convert -h
+./H4H5-2.2.5-Linux.sh --skip-license
+cd HDF_Group/H4H5/2.2.5/bin
+#./h4toh5convert -h
+
+## BUILD WRF3
+cd /data/wrf3/Build_WRF
+wget https://github.com/wrf-model/WRF/archive/refs/tags/V3.3.1.tar.gz
+tar xzvf V3.3.1.tar.gz
+cd WRF-3.3.1
+./clean -a
+#./configure
+# Choose 17 and 1
+# sed `s/^DM_CC/DM_CC           =       mpicc -DMPI2_SUPPORT/`
+# ./compile em_real >& compile.log &
+
 
 
 
